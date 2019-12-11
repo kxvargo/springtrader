@@ -15,8 +15,12 @@ build:
         - artifactory.toolchain.lead.prod.liatr.io/docker-registry/liatrio/springtrader-builder:latest
         - artifactory.toolchain.lead.prod.liatr.io/docker-registry/liatrio/springtrader-runner:latest
   local: {}
+
 deploy:
   helm:
+    flags:
+      upgrade: ["--timeout", "600"]
+      install: ["--timeout", "600"]
     releases:
       - name: springtrader 
         chartPath: ./charts/springtrader
